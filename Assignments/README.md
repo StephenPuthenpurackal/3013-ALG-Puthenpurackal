@@ -1,6 +1,6 @@
 ## Assignments
 
-| Folder | Assignment | Description |
+| Number | Folder | Description |
 | :----: | ------ | ----------- |
-|    [2](https://github.com/StephenPuthenpurackal/3013-ALG-Puthenpurackal/tree/master/Assignments/02-CommentedCode)    |    [Assignment 2](https://github.com/rugbyprof/3013-Algorithms/tree/master/Assignments/02-A02)    |     Commenting Code        |
+|    [2](https://github.com/rugbyprof/3013-Algorithms/tree/master/Assignments/02-A02)    |    [02-CommentedCode](https://github.com/StephenPuthenpurackal/3013-ALG-Puthenpurackal/tree/master/Assignments/02-CommentedCode)    |     Commenting Code        |
 | :----: | ------ | ----------- |
