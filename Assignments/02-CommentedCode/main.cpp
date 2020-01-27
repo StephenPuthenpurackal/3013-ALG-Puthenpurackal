@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 //                   
-// Author:           Terry Griffin
-// Email:            terry.griffin@msutexas.edu
-// Label:            A04
+// Author:           Stephen Puthenpurackal
+// Email:            sjputhenpurack1225@my.msutexas.edu
+// Label:            A02
 // Title:            Linked List Class
 // Course:           CMPS 3013
 // Semester:         Spring 2020
@@ -47,26 +47,23 @@ struct Node {
 };
 
 /**
- * Class Name
+ * Class Name: List
  * 
  * Description:
- *      Description of your class and what it does
- * 
+ *      Class that creates nodes that store size by linking the nodes together.
+ *      By having head pointer pointing to the front of the class and the tail to the back, 
+ *      makes traversal easy and also by using methods, information can be easily accessed.
  * Public Methods:
- *      - A list of 
- *      - each public method
- *      - with return types
+ *      - Push
+ *      - Insert
+ *      - PrintTail
+ *      - Pop
  * 
  * Private Methods:
- *      - A list of 
- *      - each private method
- *      - with return types
+        - None
  * 
  * Usage: 
- * 
- *      - examples of how
- *      - to use your class 
- *      
+ *      - Storing Information in order, maybe Dates on calender and events on those dates
  */
  
 class List {
@@ -82,7 +79,7 @@ public:
     }
     
       /**
-     * Public/Private/Protected : function_name
+     * Public : Push
      * 
      * Description:
      *      Describe the functions purpose
@@ -111,19 +108,15 @@ public:
     }
 
       /**
-     * Public/Private/Protected : function_name
+     *  Public : Insert
      * 
      * Description:
-     *      Describe the functions purpose
+     *     Inserts Integer value into node
      * 
      * Params:
-     *      - list params
-     *      - one per line
-     *      - with return type
-     *      - and one line description
-     * 
+     *      Integar Value
      * Returns:
-     *      - what does this function return (including the type)?
+     *      Nothing
      */
 
     void Insert(int val) {
@@ -141,19 +134,15 @@ public:
     }
 
       /**
-     * Public/Private/Protected : function_name
+     * Public : PrintTail
      * 
      * Description:
-     *      Describe the functions purpose
+     *     Prints Tail node
      * 
      * Params:
-     *      - list params
-     *      - one per line
-     *      - with return type
-     *      - and one line description
-     * 
+     *      None
      * Returns:
-     *      - what does this function return (including the type)?
+     *      returns nothing
      */
 
     void PrintTail() {
@@ -173,7 +162,7 @@ public:
     }
 
      /**
-     * Public/Private/Protected : function_name
+     * Public : Pop
      * 
      * Description:
      *      Describe the functions purpose
@@ -185,7 +174,7 @@ public:
      *      - and one line description
      * 
      * Returns:
-     *      - what does this function return (including the type)?
+     *     Function returns integer Value
      */
     int Pop() {
         Size--;
@@ -241,9 +230,23 @@ public:
     }
 };
 
+
+ /**
+     * Main
+     * 
+     * Description:
+     *     Runs main program
+     * 
+     * Params:
+     *      - argc
+     *      - char **argv
+     * Returns:
+     *      - nothing
+     */
+
 int main(int argc, char **argv) {
-    List L1;
-    List L2;
+    List L1;    // Creating First list
+    List L2;    // Creating Second List
 
     for (int i = 0; i < 25; i++) {
         L1.Push(i);
