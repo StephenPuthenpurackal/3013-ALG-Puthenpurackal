@@ -12,6 +12,8 @@
 //
 /////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
+#include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -28,14 +30,16 @@ using namespace std;
  *      - See main program
  *      
  */
-class ArrayStack{
+class ArrayStack
+{
 private:
-  int *A;           // pointer to array of int's
-  int size;         // current max stack size
-  int top;          // top of stack 
+    int *A;   // pointer to array of int's
+    int size; // current max stack size
+    int top;  // top of stack
+    int resizeCount;
 
 public:
- /**
+    /**
   * ArrayStack
   * 
   * Description:
@@ -47,13 +51,15 @@ public:
   * Returns:
   *     - NULL
   */
-  ArrayStack(){
-    size = 10;
-    A = new int[size];
-    top = -1;
-  }
+    ArrayStack()
+    {
+        size = 10;
+        A = new int[size];
+        top = -1;
+        resizeCount = 0;
+    }
 
- /**
+    /**
   * ArrayStack
   * 
   * Description:
@@ -65,13 +71,14 @@ public:
   * Returns:
   *     - NULL
   */
-  ArrayStack(int s){
-    size = s;
-    A = new int[s];
-    top = -1;
-  }
+    ArrayStack(int s)
+    {
+        size = s;
+        A = new int[s];
+        top = -1;
+    }
 
- /**
+    /**
   * Public bool: Empty
   * 
   * Description:
@@ -83,11 +90,12 @@ public:
   * Returns:
   *      [bool] true = empty
   */
-  bool Empty(){
-    return (top <= -1);
-  }
-  
- /**
+    bool Empty()
+    {
+        return (top <= -1);
+    }
+
+    /**
   * Public bool: Full
   * 
   * Description:
@@ -99,11 +107,12 @@ public:
   * Returns:
   *      [bool] true = full
   */
-  bool Full(){
-    return (top >= size-1);
-  }
+    bool Full()
+    {
+        return (top >= size - 1);
+    }
 
- /**
+    /**
   * Public int: Peek
   * 
   * Description:
@@ -115,16 +124,18 @@ public:
   * Returns:
   *      [int] top value if any
   */
-  int Peek(){
-    if(!Empty()){
-      return A[top];
-    }
-    
-    return -99; // some sentinel value
-                // not a good solution
-  }
+    int Peek()
+    {
+        if (!Empty())
+        {
+            return A[top];
+        }
 
- /**
+        return -99; // some sentinel value
+                    // not a good solution
+    }
+
+    /**
   * Public int: Pop
   * 
   * Description:
@@ -136,16 +147,18 @@ public:
   * Returns:
   *      [int] top value if any
   */
-  int Pop(){
-    if(!Empty()){
-      return A[top--];
+    int Pop()
+    {
+        if (!Empty())
+        {
+            return A[top--];
+        }
+
+        return -99; // some sentinel value
+                    // not a good solution
     }
 
-    return -99; // some sentinel value
-                // not a good solution
-  }
-
- /**
+    /**
   * Public void: Print
   * 
   * Description:
@@ -157,14 +170,18 @@ public:
   * Returns:
   *      NULL
   */
-  void Print(){
-    for(int i=0;i<=top;i++){
-      cout<<A[i]<<" ";
+    void Print()
+    {
+        for (int i = 0; i <= top; i++)
+        {
+            //cout<<A[i]<<" ";
+            cout << A[i] << endl;
+            ;
+        }
+        cout << endl;
     }
-    cout<<endl;
-  } 
 
- /**
+    /**
   * Public bool: Push
   * 
   * Description:
@@ -176,20 +193,27 @@ public:
   * Returns:
   *      [bool] ; success = true
   */
-  bool Push(int x){
-    if(Full()){
-      Resize();
-    }
-    if(!Full()){
-      A[++top] = x;
-      return true;
-    }
-    
-    return false;
-    
-  }
+    bool Push(int x)
+    {
+        if (Full())
+        {
+            ContainerGrow();
+            resizeCount++;
+        }
+        if (!Full())
+        {
+            if(top <= (size/2)){
+                ContainerShrink();
+                resizeCount++;
+            }
+            A[++top] = x;
+            return true;
+        }
 
- /**
+        return false;
+    }
+
+    /**
   * Public void: Resize
   * 
   * Description:
@@ -202,41 +226,129 @@ public:
   * Returns:
   *      NULL
   */
-  void Resize(){
-    int newSize = size*2;       // double size of original
-    int *B = new int[newSize];  // allocate new memory
+    void Resize()
+    {
+        int newSize = size * 2;    // double size of original
+        int *B = new int[newSize]; // allocate new memory
 
-    for(int i=0;i<size;i++){    // copy values to new array
-      B[i] = A[i];
+        for (int i = 0; i < size; i++)
+        { // copy values to new array
+            B[i] = A[i];
+        }
+
+        delete[] A; // delete old array
+
+        size = newSize; // save new size
+
+        A = B; // reset array pointer
     }
 
-    delete [] A;                // delete old array
+    void ContainerGrow()
+    {
+        int newSize = size * 1.75;    // double size of original
+        int *B = new int[newSize]; // allocate new memory
 
-    size = newSize;             // save new size
+        for (int i = 0; i < size; i++)
+        { // copy values to new array
+            B[i] = A[i];
+        }
 
-    A = B;                      // reset array pointer
+        delete[] A; // delete old array
 
-  }
+        size = newSize; // save new size
 
+        A = B; // reset array pointer
+
+    }
+
+    void ContainerShrink()
+    {
+         int newSize = size -0.5;    // double size of original
+        int *B = new int[newSize]; // allocate new memory
+
+        for (int i = 0; i < size; i++)
+        { // copy values to new array
+            B[i] = A[i];
+        }
+
+        delete[] A; // delete old array
+
+        size = newSize; // save new size
+
+        A = B; // reset array pointer
+    }
+
+    void CheckResize(ArrayStack stack)
+    {
+    }
 };
 
 // MAIN DRIVER
 // Simple Array Based Stack Usage:
-int main() {
-  ArrayStack stack;
-  int r = 0;
+int main()
+{
+    int x = 0;
+    ifstream infile;
+    ArrayStack stack;
 
-  for(int i=0;i<20;i++){
-    r = rand() % 100;
-    r = i+1;
-    if(!stack.Push(r)){
-      cout<<"Push failed"<<endl;
+    infile.open("nums.dat");
+
+    while (!infile.eof())
+    {
+        infile >> x;
+
+        // if(x % 2 == 0) {
+        //  //if(!stack.Push(x)){
+        //      if(){
+        //        cout<<"Push failed"<< endl;
+        //      }
+        //      else if(stack.Full()){
+
+        // }
+        // else if(x % 2 == 1){
+        //     stack.Pop();
+        // }
+        // else{
+        //     cout << "Else statement = " << x << endl;
+        // }
+
+        if (x % 2 == 0)
+        {
+
+            if(stack.Full()){
+                stack.ContainerGrow();
+                stack.Push(x);
+                break;
+            }
+
+            if (!stack.Push(x))
+            {
+                cout << "Push failed" << endl;
+            }
+        }
+        else if (x % 2 == 1)
+            {
+                stack.Pop();
+            }
+        else
+            {
+                cout << "Else statement = " << x << endl;
+            }
+
+            //   for(int i=0;i<20;i++){
+            //     r = rand() % 100;
+            //     r = i+1;
+            //     if(!stack.Push(r)){
+            //       cout<<"Push failed"<<endl;
+            //     }
+            //   }
+
+            //   for(int i=0;i<7;i++){
+            //     stack.Pop();
+            //   }
+
+            //   stack.Print();
+        }
+        cout << "Printing Stack" << endl;
+        stack.Print();
     }
-  }
-
-  for(int i=0;i<7;i++){
-    stack.Pop();
-  }
-
-  stack.Print();
-}
