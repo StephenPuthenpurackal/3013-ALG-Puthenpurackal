@@ -1,9 +1,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Author:           Stephen
-// Email:            terry.griffin@msutexas.edu
-// Label:            L01
-// Title:            Lecture 01 - Array Based Stack
+// Email:            sjputhenpurack1225@my.msutexas.edu
+// Label:            04-P01
+// Title:            Assignment 4 - Resizing the Stack
 // Course:           3013
 // Semester:         Spring 2020
 //
