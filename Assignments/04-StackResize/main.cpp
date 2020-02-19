@@ -215,9 +215,6 @@ public:
         }
         if (!Full())
         {
-            if(top <= (size/2)){
-                ContainerGrow();
-            }
             A[++top] = x;
             return true;
         }
