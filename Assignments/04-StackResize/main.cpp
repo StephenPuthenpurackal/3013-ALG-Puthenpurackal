@@ -247,6 +247,7 @@ public:
         delete[] A; // delete old array
 
         size = newSize; // save new size
+        SizeMax = size;
 
         A = B; // reset array pointer
     }
@@ -264,6 +265,7 @@ public:
         delete[] A; // delete old array
 
         size = newSize; // save new size
+        SizeMax = size;
 
         A = B; // reset array pointer
 
