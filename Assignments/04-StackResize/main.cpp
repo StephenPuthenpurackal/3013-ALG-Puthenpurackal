@@ -185,7 +185,7 @@ public:
   * Returns:
   *      NULL
   */
-    void Print(ifstream& infile, ofstream& outfile)
+    void Print(ofstream& outfile)
     {
         for (int i = 0; i <= top; i++)
         {
@@ -258,7 +258,7 @@ public:
         int newSize = size * 1.75;    // double size of original
         int *B = new int[newSize]; // allocate new memory
 
-        for (int i = 0; i < newSize; i++)
+        for (int i = 0; i < Size; i++)
         { // copy values to new array
             B[i] = A[i];
         }
@@ -294,7 +294,7 @@ public:
 
     void CheckResize(ArrayStack stack)
     {
-        cout << "CheckSize" << endl;
+        cout << "It has been resized " << resizeCount << "times." << endl;
         return;
     }
 };
@@ -333,12 +333,16 @@ int main()
         } 
 
         // Every other number will be odd
+        else{
         stack.Pop();
         cout << "Stack is popping " << endl;
-
+        }
     }
+
+
+
     cout << "Printing Stack" << endl;
-    stack.Print(infile,outfile);
+    stack.Print(outfile);
 
 
     return 0;
