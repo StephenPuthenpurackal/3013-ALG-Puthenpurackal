@@ -223,11 +223,10 @@ public:
     }
 
     /**
-  * Public void: Resize
+  * Public void: PrintNicely
   * 
   * Description:
-  *      Resizes the container for the stack by doubling
-  *      its capacity
+  *      Prints the information neatly
   * 
   * Params:
   *      NULL
@@ -235,22 +234,16 @@ public:
   * Returns:
   *      NULL
   */
-    void Resize()
-    {
-        int newSize = size * 2;    // double size of original
-        int *B = new int[newSize]; // allocate new memory
-
-        for (int i = 0; i < size; i++)
-        { // copy values to new array
-            B[i] = A[i];
-        }
-
-        delete[] A; // delete old array
-
-        size = newSize; // save new size
-        SizeMax = size;
-
-        A = B; // reset array pointer
+    void PrintNicely(ofstream& outfile){
+        outfile << "######################################################################"
+        << endl;
+        outfile << "CMPS 3013 " << endl;
+        outfile << "Stephen Puthenpurackal" << endl << endl;
+        outfile << "Max Stack Size = " << SizeMax << endl;
+        outfile << "End Stack Size = " << size << endl;
+        outfile << "Stack Resized = " << resizeCount << endl;
+        outfile << "######################################################################"
+        << endl;
     }
 
     void ContainerGrow()
@@ -341,9 +334,9 @@ int main()
 
 
 
-    cout << "Printing Stack" << endl;
-    stack.Print(outfile);
-
+    // cout << "Printing Stack" << endl;
+    // stack.Print(outfile);
+    stack.PrintNicely(outfile);
 
     return 0;
 }
