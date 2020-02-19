@@ -159,7 +159,7 @@ public:
             // Since the size of the stack cannot falter below 10, with proper indexing of the ratio we use 19 as a comparison sentinal. 
             //  
 
-            if(((top+1 >= size/2) == false) && (size > 19)){
+            if((((top+1) >= (size/2)) == false) && (size > 19)){
                     ContainerShrink();
               }
             // if(!((top + 1) >= (size/2)) && (size > 19)){
