@@ -246,8 +246,10 @@ public:
     }
 
     void ContainerGrow()
-    {
-        int newSize = size * 1.75;    // double size of original
+    {   
+        int NewMaxSize = 0;
+        int OldMaxSize = SizeMax;
+        int newSize = NewMaxSize = size * 1.75;    // double size of original
         int *B = new int[newSize]; // allocate new memory
 
         for (int i = 0; i < size; i++)
@@ -258,8 +260,11 @@ public:
         delete[] A; // delete old array
 
         size = newSize; // save new size
-        SizeMax = size;
 
+        if(NewMaxSize > OldMaxSize){
+            SizeMax = size;
+        }
+        
         A = B; // reset array pointer
 
         resizeCount++;
@@ -307,7 +312,7 @@ int main()
     while (!infile.eof())
     {
         infile >> x;
-        cout << x << endl;
+       
         // Modulus operator returns the remainder of the divisible.
         // If remainder is equal to zero,
         // then we know that the answer is even
@@ -320,15 +325,12 @@ int main()
             {
                 cout << "Push failed" << endl;
             }
-            // else{
-                cout << "Push happened " << endl;
-            //     }
+
         } 
 
         // Every other number will be odd
         else{
                 stack.Pop();
-                cout << "Stack is popping " << endl;
         }
     }
 
