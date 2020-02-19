@@ -320,10 +320,14 @@ int main()
         {   
 
             // Short version to check whether if the push is available, and if available, then push() is already executed
-             if(!stack.Push(x)){
+             if(!stack.Push(x))
+             {
                 cout << "Push failed" << endl;
-            }
-        }
+                }
+            // else{
+            //     cout << "Push happened " << endl;
+            //     }
+           
             // Every other number will be odd
         else{
             stack.Pop();
@@ -332,8 +336,8 @@ int main()
 
       
     
+         }
     }
-
       cout << "Printing Stack" << endl;
     stack.Print();
 
