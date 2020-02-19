@@ -77,7 +77,7 @@ public:
         size = SizeMax = s;
         A = new int[s];
         top = -1;
-        resizeCount = 0;
+        
     }
 
     /**
