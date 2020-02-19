@@ -72,7 +72,8 @@ int main()
     for (int i = 0; i < SizeOfJsonFile; i++)
     {
         object = JF.getNext();
-        CityPointer[i] = new City(object);
+        // if(object.Word.CharAt(i) == )
+        temp[i] = new WordNode(object);
     }
 
     // test code
