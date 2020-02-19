@@ -2,7 +2,7 @@
 CMPS 3013 
 Stephen Puthenpurackal
 
-Max Stack Size = 617
-End Stack Size = 617
-Stack Resized = 604
+Max Stack Size = 40831
+End Stack Size = 17
+Stack Resized = 28
 ######################################################################
