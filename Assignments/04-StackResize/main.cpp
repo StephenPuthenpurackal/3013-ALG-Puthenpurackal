@@ -307,6 +307,7 @@ int main()
     while (!infile.eof())
     {
         infile >> x;
+        cout << x << endl;
         // Modulus operator returns the remainder of the divisible.
         // If remainder is equal to zero,
         // then we know that the answer is even
@@ -337,5 +338,9 @@ int main()
     // stack.Print(outfile);
     stack.PrintNicely(outfile);
 
+
+
+    infile.close();
+    outfile.close();
     return 0;
 }
