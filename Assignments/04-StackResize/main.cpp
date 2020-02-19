@@ -268,7 +268,7 @@ public:
 
     void ContainerShrink()
     {
-         int newSize = size -0.5;    // double size of original
+         int newSize = size * 0.5;    // double size of original
         int *B = new int[newSize]; // allocate new memory
 
         for (int i = 0; i < newSize; i++)
