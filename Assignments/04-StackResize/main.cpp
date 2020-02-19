@@ -258,7 +258,7 @@ public:
         int newSize = size * 1.75;    // double size of original
         int *B = new int[newSize]; // allocate new memory
 
-        for (int i = 0; i < Size; i++)
+        for (int i = 0; i < size; i++)
         { // copy values to new array
             B[i] = A[i];
         }
