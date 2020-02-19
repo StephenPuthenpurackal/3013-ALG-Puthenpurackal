@@ -213,7 +213,7 @@ public:
         if (!Full())
         {
             if(top <= (size/2)){
-                ContainerShrink();
+                ContainerGrow();
             }
             A[++top] = x;
             return true;
@@ -313,29 +313,24 @@ int main()
     while (!infile.eof())
     {
         infile >> x;
-
-
         // Modulus operator returns the remainder of the divisible. If remainder is equal to zero, then we know that the answer is even
         if (x % 2 == 0)
         {   
 
             // Short version to check whether if the push is available, and if available, then push() is already executed
              if(!stack.Push(x))
-             {
+            {
                 cout << "Push failed" << endl;
-                }
+            }
             // else{
             //     cout << "Push happened " << endl;
             //     }
            
             // Every other number will be odd
-        else{
-            stack.Pop();
-            cout << "Stack is popping " << endl;
+            else{
+                stack.Pop();
+                cout << "Stack is popping " << endl;
             }
-
-      
-    
          }
     }
       cout << "Printing Stack" << endl;
