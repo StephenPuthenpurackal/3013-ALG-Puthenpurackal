@@ -13,7 +13,6 @@
 /////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <fstream>
-#include <vector>
 
 using namespace std;
 
@@ -327,8 +326,8 @@ int main()
 
         // Every other number will be odd
         else{
-        stack.Pop();
-        cout << "Stack is popping " << endl;
+                stack.Pop();
+                cout << "Stack is popping " << endl;
         }
     }
 
