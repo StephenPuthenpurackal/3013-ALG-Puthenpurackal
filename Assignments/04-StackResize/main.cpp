@@ -181,15 +181,14 @@ public:
   * Returns:
   *      NULL
   */
-    void Print()
+    void Print(ifstream& infile, ofstream& outfile)
     {
         for (int i = 0; i <= top; i++)
         {
             //cout<<A[i]<<" ";
-            cout << A[i] << endl;
-            ;
+            outfile << A[i] << endl;
         }
-        cout << endl;
+        outfile << endl;
     }
 
     /**
@@ -335,8 +334,8 @@ int main()
         cout << "Stack is popping " << endl;
 
     }
-   outfile << "Printing Stack" << endl;
-    stack.Print();
+    cout << "Printing Stack" << endl;
+    stack.Print(infile,outfile);
 
 
     return 0;
