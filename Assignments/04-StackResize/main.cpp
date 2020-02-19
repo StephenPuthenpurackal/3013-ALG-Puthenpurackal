@@ -36,7 +36,8 @@ private:
     int *A;   // pointer to array of int's
     int size; // current max stack size
     int top;  // top of stack
-    int resizeCount;
+    int resizeCount; // The number of times the stack has been resized in any kind of way;
+    int SizeMax; //  Maximum size that has been reached thus far, but the stack
 
 public:
     /**
@@ -53,7 +54,7 @@ public:
   */
     ArrayStack()
     {
-        size = 10;
+        size = SizeMax = 10;
         A = new int[size];
         top = -1;
         resizeCount = 0;
@@ -73,9 +74,10 @@ public:
   */
     ArrayStack(int s)
     {
-        size = s;
+        size = SizeMax = s;
         A = new int[s];
         top = -1;
+        resizeCount = 0;
     }
 
     /**
@@ -150,8 +152,17 @@ public:
     int Pop()
     {
         if (!Empty())
-        {
-            return A[top--];
+        {   
+            int Temp;
+            Temp = A[top--];
+            
+            // Since the size of the stack cannot falter below 10, with proper indexing of the ratio we use 19 as a comparison sentinal. 
+            //  
+            if(!((top + 1) >= (size/2)) && (size > 19)){
+                ContainerShrink();
+            }
+
+
         }
 
         return -99; // some sentinel value
@@ -198,13 +209,11 @@ public:
         if (Full())
         {
             ContainerGrow();
-            resizeCount++;
         }
         if (!Full())
         {
             if(top <= (size/2)){
                 ContainerShrink();
-                resizeCount++;
             }
             A[++top] = x;
             return true;
@@ -259,6 +268,7 @@ public:
 
         A = B; // reset array pointer
 
+        resizeCount++;
     }
 
     void ContainerShrink()
@@ -276,10 +286,14 @@ public:
         size = newSize; // save new size
 
         A = B; // reset array pointer
+
+        resizeCount++;
     }
 
     void CheckResize(ArrayStack stack)
     {
+        cout << "CheckSize" << endl;
+        return;
     }
 };
 
@@ -289,66 +303,40 @@ int main()
 {
     int x = 0;
     ifstream infile;
+    infile.open("nums.dat");
+    ofstream outfile;
+    outfile.open("output.txt");
     ArrayStack stack;
 
-    infile.open("nums.dat");
+
 
     while (!infile.eof())
     {
         infile >> x;
 
-        // if(x % 2 == 0) {
-        //  //if(!stack.Push(x)){
-        //      if(){
-        //        cout<<"Push failed"<< endl;
-        //      }
-        //      else if(stack.Full()){
 
-        // }
-        // else if(x % 2 == 1){
-        //     stack.Pop();
-        // }
-        // else{
-        //     cout << "Else statement = " << x << endl;
-        // }
-
+        // Modulus operator returns the remainder of the divisible. If remainder is equal to zero, then we know that the answer is even
         if (x % 2 == 0)
-        {
+        {   
 
-            if(stack.Full()){
-                stack.ContainerGrow();
-                stack.Push(x);
-                break;
-            }
-
-            if (!stack.Push(x))
-            {
+            // Short version to check whether if the push is available, and if available, then push() is already executed
+             if(!stack.Push(x)){
                 cout << "Push failed" << endl;
             }
         }
-        else if (x % 2 == 1)
-            {
-                stack.Pop();
-            }
-        else
-            {
-                cout << "Else statement = " << x << endl;
+            // Every other number will be odd
+        else{
+            stack.Pop();
+            cout << "Stack is popping " << endl;
             }
 
-            //   for(int i=0;i<20;i++){
-            //     r = rand() % 100;
-            //     r = i+1;
-            //     if(!stack.Push(r)){
-            //       cout<<"Push failed"<<endl;
-            //     }
-            //   }
-
-            //   for(int i=0;i<7;i++){
-            //     stack.Pop();
-            //   }
-
-            //   stack.Print();
-        }
-        cout << "Printing Stack" << endl;
-        stack.Print();
+      
+    
     }
+
+      cout << "Printing Stack" << endl;
+    stack.Print();
+
+
+    return 0;
+}
