@@ -4,7 +4,7 @@
 | Assignment-Number/Professors-Assignment-Folder | Students-AssignmentFolder |
 |:-----------|:-------------|
 | [01-A01 **Assignment 1**](https://github.com/HyperlinkThatisFromProfesso) | [NameOfAssignment](UserHyperlink) |
-| [02-A02 **Assignment 2**](https://github.com/StephenPuthenpurackal/3013-ALG-Puthenpurackal/tree/master/Assignments/02-CommentedCode) | [NameOfAssignment](UserHyperlink) |
+| [02-A02 **Assignment 2**](https://github.com/StephenPuthenpurackal/3013-ALG-Puthenpurackal/tree/master/Assignments/02-CommentedCode) | [Banner Page](https://github.com/StephenPuthenpurackal/3013-ALG-Puthenpurackal/tree/master/Assignments/02-CommentedCode) |
 | [03-H03 **Assignment 3**](https://github.com/StephenPuthenpurackal/3013-ALG-Puthenpurackal/blob/master/Assignments/03-H01/banner) | [NameOfAssignment](UserHyperlink) |
 | [04-P01 **Assignment 4**](https://github.com/rugbyprof/3013-Algorithms/tree/master/Assignments/03-H01) | [NameOfAssignment](UserHyperlink) |
 | [05-P02 **Assignment 5**](https://github.com/HyperlinkThatisFromProfesso) | [NameOfAssignment](UserHyperlink) |
